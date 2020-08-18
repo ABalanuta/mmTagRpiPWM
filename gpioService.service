@@ -1,0 +1,14 @@
+[Unit]
+Description=Milimitro Service
+StartLimitIntervalSec=0
+
+[Service]
+Type=oneshot
+Restart=always
+RestartSec=1
+User=pi
+ExecStartPre=sudo pigpiod -s 4
+ExecStart=/usr/bin/env python3 /home/pi/run.py
+
+[Install]
+WantedBy=multi-user.target
