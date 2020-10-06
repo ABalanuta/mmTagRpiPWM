@@ -5,8 +5,13 @@ import pigpio
 from os import system
 from time import sleep
 
-
-
+__author__ = "Artur Balanuta"
+__copyright__ = "Copyright 2020, The Millimitro Project"
+__license__ = "Apache"
+__version__ = "1.0.1"
+__maintainer__ = "Artur Balanuta"
+__email__ = "arturb@cmu.edu"
+__status__ = "Production"
 
 @click.command('cli')
 @click.option('--rf', '-t', required=True, type=click.Choice(['reflective', 'non-reflective', 'disable-all'], case_sensitive=False))
@@ -47,9 +52,9 @@ def cli(rf, mode):
             click.echo('Please specify --mode, -m ')
 
     elif rf == 'disable-all':
-        gpio.write(27, 0) # Inverter Disable
         gpio.write(22, 0) # Switch A Disable
         gpio.write(17, 0) # Switch B Disable
+        gpio.write(27, 0) # Inverter Disable
         
 if __name__ == '__main__':
     cli()
